@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+  {% block content %}
+    <div class="banner">
+      <img src="{% static "img/nerf.png" %}" alt="nerf this" class="nerf-this">
+    </div>
+    <div class="col-md-8 offset-md-2 about">
+      <h2>About</h2>
+      <p>Welcome to Nerf This! An open source API that focuses on data about Overwatch!</p>
+      <p>With this API you have access to {{ heroes_count }} heroes, {{ abilities_count }} abilities, {{ voice_lines_count }} voice lines and {{ maps_count }} maps.</p>
+      <p>Use the form below try the API out for yourself, or you can view the <a href="{% url 'documentation' %}">documentation</a> to view the available endpoints.</p>
+      <form class="form-inline" v-on:submit.prevent="MakeAPIRequest(searchTerm)">
+
+        <div class="form-group col-md-9" style="padding: 0px;">
+          <input type="text" v-model="searchTerm" class="form-control col-md-12" id="example-request" placeholder="heroes/1">
+        </div>
+        <button type="submit" class="btn btn-primary col-md-3" id="submit-btn">Submit</button>
+
+      </form>
+      <p id="preview-endpoint">${ endPoint } <span>${ error} </span></p>
+      <pre><code>${ apiResponse }</code></pre>
+    </div>
+  {% endblock %}
+
+  {% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+      var app = new Vue({
+        el: '#app',
+        delimiters: ['${', '}'],
+        data: {
+          error: '',
+          searchTerm: '',
+          endPoint: '',
+          apiResponse: {}
+        },
+        methods: {
+          MakeAPIRequest: function(searchTerm){
+            this.endPoint = searchTerm
+            this.error = ''
+            axios.get(window.location.href + 'api/v1/' + searchTerm
+            ).then(response => {
+              this.apiResponse = response.data
+            }).catch(e => {
+                this.error = "There was an error with your request: " + e.response.statusText
+              })
+          }
+        },
+        beforeMount(){
+          this.searchTerm = 'heroes/1'
+          this.MakeAPIRequest(this.searchTerm)
+        }
+      })
+    </script>
+  {% endblock %}

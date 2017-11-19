@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>Nerf This | Documentation</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid" id="docs">
+    <div class="col-md-8 offset-md-2" id="content">
+      <h1>Nerf This Documentation</h1>
+      <br>
+      <h2>The API</h2>
+      <p>The API is served from <strong>https://nerfthisapi.com/api/[version]</strong>.
+        All endpoints must be prepended by <code>api/v1/</code> Responses are formatted in JSON <code>application/json</code>.</p>
+
+      <h2>Endpoints</h2>
+      <p>The endpoints for the API are as follows:</p>
+      <ul class="endpoints">
+        <li><code>/heroes</code></li>
+        <li><code>/heroes/[hero_id]</code></li>
+        <li><code>/heroes/[hero_id]/abilities</code></li>
+        <li><code>/heroes/[hero_id]/voicelines</code></li>
+        <li><code>/abilites</code></li>
+        <li><code>/abilites/[ability_id]</code></li>
+        <li><code>/voicelines</code></li>
+        <li><code>/voicelines/[voiceline_id]</code></li>
+        <li><code>/maps</code></li>
+        <li><code>/maps/[map_id]</code></li>
+      </ul>
+      <br>
+      <hr>
+      <br>
+      <h3>Hero Endpoints</h3>
+      <h5 class="docs-endpoint"><code>GET /heroes</code></h5>
+      <p><i>Returns all heroes</i></p>
+      <h4>Response</h4>
+      <pre><code v-cloak>${ heroesData }</code></pre>
+      <br>
+      <h4>URL Query Parameters</h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Param</th>
+            <th>Value</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>role</code></td>
+            <td>string</td>
+            <td>Return heroes with matching role e.g Offense</td>
+          </tr>
+          <tr>
+            <td><code>sub_role</code></td>
+            <td>string</td>
+            <td>Return heroes with matching sub role e.g Sniper</td>
+          </tr>
+          <tr>
+            <td><code>affiliation</code></td>
+            <td>string</td>
+            <td>Return heroes with matching affiliation e.g Overwatch</td>
+          </tr>
+          <tr>
+            <td><code>difficulty</code></td>
+            <td>string</td>
+            <td>Return heroes with matching difficulty (1-3 with 1 being easy and 3 being difficult)</td>
+          </tr>
+          <tr>
+            <td><code>nationality</code></td>
+            <td>string</td>
+            <td>Return heroes with matching nationality e.g Irish</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <h5 class="docs-endpoint"><code>GET /heroes/<span>[hero_id]</span></code></h5>
+      <p><i>Returns hero with matching hero id</i></p>
+      <h4>Response</h4>
+      <pre><code v-cloak>${ heroData }</code></pre>
+      <br>
+      <h5 class="docs-endpoint"><code>GET /heroes/<span>[hero_id]</span>/abilities</code></h5>
+      <p><i>Returns abilities belonging to a particular hero</i></p>
+      <h4>Response</h4>
+      <pre><code v-cloak>${ heroAbilitiesData }</code></pre>
+      <br>
+      <hr>
+      <br>
+      <h3>Ability Endpoints</h3>
+      <h5 class="docs-endpoint"><code>GET /abilites/</code></h5>
+      <p><i>Returns all abilities</i></p>
+      <h4>Response</h4>
+      <pre><code v-cloak>${ abilitiesData }</code></pre>
+      <br>
+      <h5 class="docs-endpoint"><code>GET /abilites/<span>[ability_id]</span></code></h5>
+      <p><i>Returns ability with matching ability id</i></p>
+      <h4>Response</h4>
+      <pre><code v-cloak>${ abilityData }</code></pre>
+      <br>
+      <hr>
+      <br>
+      <h3>Voice Line Endpoints</h3>
+      <h5 class="docs-endpoint"><code>GET /voicelines/</code></h5>
+      <p><i>Returns all voice lines</i></p>
+      <h4>Response</h4>
+      <pre><code v-cloak>${ voicelinesData }</code></pre>
+      <br>
+      <h5 class="docs-endpoint"><code>GET /voicelines/<span>[voiceline_id]</span></code></h5>
+      <p><i>Returns voice line with matching voiceline id</i></p>
+      <h4>Response</h4>
+      <pre><code v-cloak>${ voicelineData }</code></pre>
+      <br>
+      <h4>URL Query Parameters</h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Param</th>
+            <th>Value</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>hero</code></td>
+            <td>string</td>
+            <td>Return voice lines with matching hero name e.g Mercy</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <hr>
+      <br>
+      <h3>Map Endpoints</h3>
+      <h5 class="docs-endpoint"><code>GET /maps/</code></h5>
+      <p><i>Returns all maps</i></p>
+      <h4>Response</h4>
+      <pre><code v-cloak>${ mapsData }</code></pre>
+      <br>
+
+      <h4>URL Query Parameters</h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Param</th>
+            <th>Value</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>mode</code></td>
+            <td>string</td>
+            <td>Return maps with matching game mode e.g Deathmatch</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <h5 class="docs-endpoint"><code>GET /maps/<span>[map_id]</span></code></h5>
+      <p><i>Returns map with matching map id</i></p>
+      <h4>Response</h4>
+      <pre><code v-cloak>${ mapData }</code></pre>
+      <br>
+      <hr>
+      <br>
+      <h1>List Responses</h1>
+      <p>All list responses contain the following:</p>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>count</code></td>
+            <td>The number of results</td>
+          </tr>
+          <tr>
+            <td><code>next</code></td>
+            <td>The URL for the next page of results</td>
+          </tr>
+          <tr>
+            <td><code>previous</code></td>
+            <td>The URL for the previous page of results</td>
+          </tr>
+          <tr>
+            <td><code>results</code></td>
+            <td>The list of results</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <hr>
+      <br>
+      <h1>Request Limits</h1>
+      <p>The Nerf This API limits requests to 500 per hour.</p>
+      <br>
+      <hr>
+      <br>
+      <h1>Pagination</h1>
+      <p>The Nerf This API makes use of pagination using <code>limit</code> and <code>offset</code> values. You can use these to navigate the results of the API. The default page size is 250 results.</p>
+      <br>
+      <hr>
+      <br>
+      <h1>Issues and Contributions</h1>
+      <p>If you notice any errors with the data or with the API in general, you can check the issues page <a href="https://github.com/graciek/nerfthisapi/issues">github.com/graciek/nerfthisapi/issues</a>. If it hasn't been already been reported, feel free to report it there.</p>
+      <p>The Nerf This API is an open source project, so you can also fork the project and submit a pull request to add changes/fix any issues.</p>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script type="text/javascript">
+
+    var app = new Vue({
+      el: '#docs',
+      delimiters: ['${', '}'],
+      data: {
+        heroesData: {},
+        heroData: {},
+        heroAbilitiesData: {},
+        abilitiesData: {},
+        abilityData: {},
+        voicelinesData: {},
+        voicelineData: {},
+        mapsData: {},
+        mapData: {}
+      },
+      methods: {
+        MakeAPIRequest: function(endpoint){
+          this.error = ''
+          var url = location.protocol + '//' + location.host + '/api/v1/';
+          return axios.get(url + endpoint
+          ).then(response => {
+            return response.data
+          }).catch(e => {
+              return "There was an error with the request: " + e
+            })
+        }
+      },
+      beforeMount(){
+        this.MakeAPIRequest('heroes').then(value => this.heroesData = value)
+        console.log(typeof(this.heroesData))
+        this.MakeAPIRequest('heroes/1').then(value => this.heroData = value)
+        this.MakeAPIRequest('heroes/1/abilities').then(value => this.heroAbilitiesData = value)
+        this.MakeAPIRequest('abilities').then(value => this.abilitiesData = value)
+        this.MakeAPIRequest('abilities/1').then(value => this.abilityData = value)
+        this.MakeAPIRequest('voicelines').then(value => this.voicelinesData = value)
+        this.MakeAPIRequest('voicelines/1').then(value => this.voicelineData = value)
+        this.MakeAPIRequest('maps').then(value => this.mapsData = value)
+        this.MakeAPIRequest('maps/1').then(value => this.mapData = value)
+      }
+    })
+    </script>
+  {% endblock %}

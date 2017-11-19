@@ -1,0 +1,10 @@
+django==1.9.12
+djangorestframework==3.6.3
+gunicorn==19.3.0
+django-multiselectfield==0.1.8
+pillow==4.3.0
+whitenoise==3.3.1
+dj-database-url
+psycopg2
+boto3
+django-storages

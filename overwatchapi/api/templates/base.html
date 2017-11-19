@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121334622-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-121334622-1');
+  </script>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static "img/favicon.ico" %}"/>
+  {% block title %}
+    <title>Nerf This | An Overwatch API</title>
+  {% endblock %}
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+  <div class="container-fluid" id="app">
+    <nav class="navbar navbar-expand-lg">
+      <div class="navbar w-100 order-3" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'apiv1:api-root' %}">The API</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'documentation' %}">Documentation</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  {% block content %}
+  {% endblock %}
+  <footer>Made with <span>♥</span> by <a href="https://github.com/graciek" target="_blank">graciek</a></footer>
+</body>
+{% block scripts %}
+{% endblock %}
+</html>

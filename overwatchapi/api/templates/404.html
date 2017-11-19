@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static "img/favicon.ico" %}"/>
+      <title>Nerf This | Page Not Found</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+  </head>
+  <body id="not_found">
+    <div class="container-fluid">
+      <h1>404</h1>
+      <p>Page not found.</p>
+      <img src="{% static "img/facepalm.png" %}" alt="facepalm">
+      <a href="{% url 'home' %}"><button type="button" class="btn btn-primary" id="submit-btn">Return Home</button></a>
+    </div>
+  </body>
+</html>
