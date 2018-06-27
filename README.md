@@ -5,7 +5,7 @@
 
 # Nerf This API
 
-Nerf This is an open source API that focuses on data about Overwatch! With this api you will have access to data for heroes, abilities, maps and voicelines. You can visit the api at
+Nerf This is an open source API that focuses on data about Overwatch! With this API you will have access to data for heroes, abilities, maps and voicelines. You can visit the API at
 [nerfthisapi.herokuapp.com](https://nerfthisapi.herokuapp.com/)
 
 # Documentation

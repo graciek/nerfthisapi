@@ -15,6 +15,7 @@ class Character(models.Model):
         ('DE', 'Defense'),
         ('TA', 'Tank'),
         ('SU', 'Support'),
+        ('DA', 'Damage')
     )
 
     SUBROLE_CHOICES = (
